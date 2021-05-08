@@ -12,7 +12,7 @@ Handler = Proc.new do |req, res|
   uri = URI("https://api.github.com/repos/#{owner}/#{repo}/actions/workflows/#{workflow}/runs")
 
   req = Net::HTTP::Get.new(uri)
-  if github_api_token.nil?
+  unless github_api_token.nil?
     req['Authorization'] = "Bearer #{github_api_token}"
   end
   http = Net::HTTP.new(uri.hostname, uri.port)
