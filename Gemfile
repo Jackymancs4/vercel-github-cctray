@@ -1,3 +1,3 @@
 source "https://rubygems.org"
 
-gem "cowsay", "~> 0.3.0"
+gem "xml-simple", "~> 1.1"
