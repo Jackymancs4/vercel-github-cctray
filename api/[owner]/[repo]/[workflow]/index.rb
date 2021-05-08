@@ -7,7 +7,7 @@ Handler = Proc.new do |req, res|
   repo = req.query['repo']
   workflow = req.query['workflow']
 
-  response = Net::HTTP.get(URI("https://api.github.com/repos/#{group}/#{repo}/actions/workflows/#{workflow}/runs"))
+  response = Net::HTTP.get(URI("https://api.github.com/repos/#{owner}/#{repo}/actions/workflows/#{workflow}/runs"))
   payload = JSON.parse(response)
 
   res.status = 200
