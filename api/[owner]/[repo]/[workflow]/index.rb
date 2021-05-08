@@ -15,10 +15,10 @@ Handler = Proc.new do |req, res|
   if github_api_token.nil?
     req['Authorization'] = "Bearer #{github_api_token}"
   end
-  response = Net::HTTP.start(uri.hostname, uri.port) {|http|
-    http.use_ssl = true
-    http.request(req)
-  }
+  http = Net::HTTP.new(uri.hostname, uri.port)
+
+  http.use_ssl = (uri.scheme == "https")
+  response = http.request(req)
 
   payload = JSON.parse(response)
 
