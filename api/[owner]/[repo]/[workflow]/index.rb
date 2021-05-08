@@ -20,7 +20,7 @@ Handler = Proc.new do |req, res|
   http.use_ssl = (uri.scheme == "https")
   response = http.request(req)
 
-  payload = JSON.parse(response)
+  payload = JSON.parse(response.body)
 
   res.status = 200
   res['Content-Type'] = 'application/xml'
